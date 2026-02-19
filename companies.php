@@ -19,7 +19,6 @@ if ($symbol !== "") {
   $company = $cStmt->fetch(PDO::FETCH_ASSOC);
 
   if ($company) {
-    // Note: PDF says volume columns are in companies table, but in your stocks.db they are in history.
     $sStmt = $pdo->prepare("
       SELECT
         COALESCE(SUM(volume),0) AS total_volume,

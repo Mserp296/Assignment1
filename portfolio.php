@@ -14,7 +14,6 @@ $totals = ["total_shares" => 0, "num_companies" => 0, "total_value" => 0];
 $holdings = [];
 
 if ($user) {
-  // totals
   $tStmt = $pdo->prepare("
     SELECT
       COALESCE(SUM(p.amount),0) AS total_shares,
@@ -29,7 +28,6 @@ if ($user) {
   $tStmt->execute([":uid" => $userId]);
   $totals = $tStmt->fetch(PDO::FETCH_ASSOC);
 
-  // holdings list
   $hStmt = $pdo->prepare("
     SELECT
       p.symbol,
